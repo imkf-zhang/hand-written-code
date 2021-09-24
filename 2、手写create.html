@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Person(name) {
+        this.name = name;
+      }
+      Person.prototype.sayHi = function () {
+        console.log("hello呀");
+      };
+
+      let person = new Person("张");
+
+      let person1 = Object.create(person);
+
+      console.log(person1.name); // 张
+      console.log(person1.sayHi()); //  hello呀
+      console.log(person1.__proto__ === person); // true  Object.create()这个方法倒是可以用来实现继承
+
+      console.log(person1.__proto__);
+      // Person {name: "张"}
+      // name: "张"
+      // __proto__:
+      // sayHi: ƒ ()
+      // constructor: ƒ Person(name)
+      // __proto__: Object
+
+
+      // 手写create方法  思路：将传入的对象作为原型
+      function myCreate(obj) {
+          function F() {};
+          F.prototype = obj;
+          return new F()
+      }
+      console.log(myCreate(person).__proto__ === person1.__proto__) // true
+      
+      let person2 = myCreate(person);
+
+      console.log(person2.name) // 张
+    </script>
+  </body>
+</html>
