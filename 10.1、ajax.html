@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 创建 xhr对象
+      let xhr = new XMLHttpRequest();
+      // 创建一个请求
+      xhr.open("GET", "http://wwww.baidu.com");
+      // 发送请求
+      xhr.send();
+      // 监听事件
+      xhr.onreadystatechange = function () {
+        // 监听xhr对象的请求状态，readyState;与服务器相应状态 status；这个判断条件式固定的，请求成功时返回的数据也是固定的
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log(xhr.responseText);
+        }
+      };
+
+      // 证明是有效的，只是跨域报错了 
+    </script>
+  </body>
+</html>
