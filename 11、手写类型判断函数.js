@@ -1,3 +1,4 @@
+// 万物皆对象
 let a = "abc", b = 8, c = true, d = null, e = undefined, f = [], f1 = [1,2,5], g = {} ,g1 = {sex: 'nan'}, h = function() {console.loh('hi')},i = new Date()
 
 console.log(typeof a ) // string
