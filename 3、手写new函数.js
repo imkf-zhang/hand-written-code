@@ -6,8 +6,42 @@ function factory(name, sex) {
   obj.sex = sex;
   return obj;
 }
-// 然后: 构造函数  弊端：创建不同对象其中属性和方法都会重复建立  解决：原型链
 
+// 然后: 构造函数  弊端：创建不同对象其中属性和方法都会重复建立  解决：原型链
+function Personn (name,sex) {
+  this.name = name
+}
+Personn.prototype.say = function() {
+  console.log(this)
+  console.log(this.name)
+}
+const zkf = new Personn("SSS","男")
+zkf.say()
+
+// 再其次就是es6语法的诞生了
+class Personnn {
+  constructor(name,sex) {
+    this.name = name;
+    this.sex = sex;
+  }
+  say() {
+    console.log(this)
+  }
+}
+
+const zkff = new Personnn("ZHANGKAIFAN","MAN")
+zkff.say()
+
+// new 干了啥？ 无非就是产生一个实例,执行构造函数（会发现构造函数执行完之后，this绑定的属性都会在实例对象上），将构造函数的this指向新的实例对象，原型上的方法也可以用-修改新对象的原型链
+function myNEW (ctx,argument) {
+  let obj = {};
+  ctx.call(obj,argument)
+  obj.__proto__ = ctx.prototype
+  return obj
+}
+
+const p = myNEW(Personn,"KKKK")
+p.say()
 
 
 // new 函数干了什么？
@@ -50,3 +84,5 @@ console.log(ldh)  // 明明33行没有返回但是怎么就又返回了呢？ �
 
 // var zxy = Person('张学友','男')
 // console.log(zxy)
+
+
