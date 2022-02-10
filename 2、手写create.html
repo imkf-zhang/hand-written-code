@@ -19,8 +19,9 @@
       // Object.create()方法创建一个新对象，
       // 使用现有的对象来提供新创建的对象的__proto__
       let person1 = Object.create(person);
+
       person1.age = "22";
-      console.log(person1);
+      console.log(person1); 
       console.log(person1.name); // 张
       console.log(person1.sayHi()); //  hello呀
       console.log(person1.__proto__ === person); // true  Object.create()这个方法倒是可以用来实现继承
@@ -44,6 +45,15 @@
       let person2 = myCreate(person);
 
       console.log(person2.name); // 张
+
+
+      class Ddd {
+        constructor () {
+
+        }
+      }
+      const ddd = new Ddd()
+       console.log(ddd)
     </script>
   </body>
 </html>
