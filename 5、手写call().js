@@ -18,6 +18,8 @@ Function.prototype.myCall = function (context) {
     if(context === null || context === undefined) {
         context = window
     }
+
+    console.log("this",this) // this [Function: say] { age: '999' }
     // 获取参数
     let args = [...arguments].slice(1)
     // 定义一个结果返回值
@@ -43,5 +45,11 @@ let obj2 = {
         console.log(this.name)
     }
 }
-
+obj2.say.age= "999"
 obj2.say.myCall(obj)  // 刘德华
+
+
+// 绕绕绕的，代码不多，绕的是真的多
+// 清除一点，函数里面的this，其实是函数本身，obj2.say调用的myCall方法，
+// 所以context.fn = this 这个this其实就是obj2.say
+// context.fn(args)  context调用函数，其实this已经指向了context(传入的值)

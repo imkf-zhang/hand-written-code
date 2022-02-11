@@ -33,13 +33,13 @@ const zkff = new Personnn("ZHANGKAIFAN","MAN")
 zkff.say()
 
 // new 干了啥？ 无非就是产生一个实例,执行构造函数（会发现构造函数执行完之后，this绑定的属性都会在实例对象上），将构造函数的this指向新的实例对象，原型上的方法也可以用-修改新对象的原型链
+// new Person其实就是一中编译器中的语法，我们也可以定义一套自己的语法，代价比较繁琐，我们就用函数来解决
 function myNEW (ctx,argument) {
   let obj = {};
   ctx.call(obj,argument)
   obj.__proto__ = ctx.prototype
   return obj
 }
-
 const p = myNEW(Personn,"KKKK")
 p.say()
 
